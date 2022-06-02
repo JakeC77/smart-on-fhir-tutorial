@@ -72,8 +72,10 @@
  
     for(var i in obs){
       var ob = obs[i]
-      var row = "<tr><td>" + ob.code.text + "</td><td>" + ob.valueQuantity.value + "</td><td>" + ob.valueQuantity.unit + "</td></tr>";
-      $('#obsTable').append(row);
+      if(ob.valueQuantity){
+        var row = "<tr><td>" + ob.code.text + "</td><td>" + ob.valueQuantity.value + "</td><td>" + ob.valueQuantity.unit + "</td></tr>";
+        $('#obsTable').append(row);
+      }
     }
   }
 
