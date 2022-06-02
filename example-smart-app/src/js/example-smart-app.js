@@ -13,8 +13,7 @@
         var pt = patient.read();
         var obv = smart.patient.api.fetchAll({
                     type: 'Observation',
-                    
-                    }
+                   
                   });
 
         $.when(pt, obv).fail(onError);
