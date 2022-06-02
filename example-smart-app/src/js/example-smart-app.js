@@ -27,7 +27,7 @@
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
-
+          populatObservationTable(obv);
           var fname = '';
           var lname = '';
 
@@ -71,6 +71,17 @@
     return ret.promise();
 
   };
+
+  function populatObservationTable(obs){
+    $('#obsTable').empty();
+    $('#obsTable').append("<tr><th>Text</th><th>Value</th><th>Unit</th>");
+ 
+    for(var i in obs){
+      var ob = obs[i]
+      var row = "<tr><td>" + ob.code.text + "</td><td>" + ob.valueQuantity.value + "</td><td>" + ob.valueQuantity.unit + "</td></tr>";
+      $('#obsTable').append(row);
+    }
+  }
 
   function defaultPatient(){
     return {
