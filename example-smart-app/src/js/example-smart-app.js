@@ -15,8 +15,16 @@
                     type: 'Observation',
                    
                   });
+        var enc = smart.patient.api.fetchAll({
+                    type: 'Encounter',
+                   
+                  });
 
         $.when(pt, obv).fail(onError);
+
+        $.when(pt,enc).done(function(patient,enc){
+            
+        });
 
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
@@ -76,6 +84,19 @@
         var row = "<tr><td>" + ob.code.text + "</td><td>" + ob.valueQuantity.value + "</td><td>" + ob.valueQuantity.unit + "</td></tr>";
         $('#obsTable').append(row);
       }
+    }
+  }
+
+  
+  function populatEcnounterTable(enc){
+    $('#encTable').empty();
+    $('#encTable').append("<tr><th>DATA</th></tr>");
+ 
+    for(var i in enc){
+      var ob = enc[i]
+        var row = "<tr><td>"+JSON.stringify()+"</td></tr>";
+        $('#encTable').append(row);
+      
     }
   }
 
