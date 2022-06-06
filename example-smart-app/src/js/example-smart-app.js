@@ -16,8 +16,7 @@
                    
                   });
         var enc = smart.patient.api.fetchAll({
-                    type: 'Encounter',
-                   
+                    type: 'Immunization',
                   });
 
         $.when(pt, obv).fail(onError);
