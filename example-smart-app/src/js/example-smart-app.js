@@ -22,7 +22,7 @@
         $.when(pt, obv).fail(onError);
 
         $.when(pt,enc).done(function(patient,enc){
-            
+          populatEcnounterTable(enc);
         });
 
         $.when(pt, obv).done(function(patient, obv) {
