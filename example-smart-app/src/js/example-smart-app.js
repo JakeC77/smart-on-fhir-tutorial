@@ -93,7 +93,7 @@
  
     for(var i in enc){
       var ob = enc[i]
-        var row = "<tr><td>"+JSON.stringify()+"</td></tr>";
+        var row = "<tr><td>"+JSON.stringify(ob)+"</td></tr>";
         $('#encTable').append(row);
       
     }
