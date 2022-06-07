@@ -16,7 +16,7 @@
                    
                   });
         var enc = smart.patient.api.fetchAll({
-                    type: 'MedicationRequest',
+                    type: 'Encounter',
                   });
 
         $.when(pt, obv).fail(onError);
