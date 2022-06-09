@@ -87,6 +87,7 @@
   }
 
   function analyzeEncounters(enc){
+    var alerts = [];
     for(var i in enc){
       var encounter = enc[i];
       if(encounter.status == 'in-progress'){
@@ -105,6 +106,8 @@
         console.log("boop");
       }
     }
+    
+    populatTriggerMessages(alerts);
   }
 
   
@@ -123,13 +126,12 @@
   function populatTriggerMessages(alerts){
     $('#trigger-messages').empty();
     $('#trigger-messages').append("<tr><th>DATA</th></tr>");
-    var alerts =[];
+    
     for(var i in alerts){
       var al = alerts[i]
         var row = "<tr><td>"+al+"</td></tr>";
         $('#trigger-messages').append(row);
       
-        populatTriggerMessages(alerts);
     }
   }
 
