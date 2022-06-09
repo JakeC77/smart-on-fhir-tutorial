@@ -1,7 +1,7 @@
 (function(window){
   window.extractData = function() {
     var ret = $.Deferred();
-
+    var alerts = [];
     function onError() {
       console.log('Loading error', arguments);
       ret.reject();
@@ -98,6 +98,7 @@
             var pDate = new Date(p);
             var diff = (now - pDate) / (1000 * 3600 * 24);
             if(diff && diff > 2){
+              alerts.push("Encounter number " + encounter.id + " Patient has open inpatient encounter lasting longer than 2 days. Total time " + Math.round(diff) + 'days.');
               console.log('bingo!');
             }
           }
