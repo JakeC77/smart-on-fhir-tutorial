@@ -24,6 +24,7 @@
         $.when(pt,enc).done(function(patient,enc) {
           analyzeEncounters(enc);
           populatEcnounterTable(enc);
+          populatTriggerMessages();
         });
 
         $.when(pt, obv).done(function(patient, obv) {
@@ -117,6 +118,18 @@
       var ob = enc[i]
         var row = "<tr><td><code>"+JSON.stringify(ob)+"</code></td></tr>";
         $('#encTable').append(row);
+      
+    }
+  }
+  
+  function populatTriggerMessages(){
+    $('#trigger-messages').empty();
+    $('#trigger-messages').append("<tr><th>DATA</th></tr>");
+ 
+    for(var i in alerts){
+      var al = alerts[i]
+        var row = "<tr><td>"+al+"</td></tr>";
+        $('#trigger-messages').append(row);
       
     }
   }
