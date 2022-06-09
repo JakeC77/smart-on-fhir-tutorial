@@ -21,7 +21,8 @@
 
         $.when(pt, obv).fail(onError);
 
-        $.when(pt,enc).done(function(patient,enc){
+        $.when(pt,enc).done(function(patient,enc) {
+          analyzeEncounters(enc);
           populatEcnounterTable(enc);
         });
 
@@ -82,6 +83,15 @@
       if(ob.valueQuantity){
         var row = "<tr><td>" + ob.code.text + "</td><td>" + ob.valueQuantity.value + "</td><td>" + ob.valueQuantity.unit + "</td></tr>";
         $('#obsTable').append(row);
+      }
+    }
+  }
+
+  function analyzeEncounters(enc){
+    for(var i in enc){
+      var encounter = enc[i];
+      if(encounter.status == 'in-progress'){
+        console.log("boop");
       }
     }
   }
