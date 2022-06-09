@@ -1,7 +1,6 @@
 (function(window){
   window.extractData = function() {
     var ret = $.Deferred();
-    var alerts = [];
     function onError() {
       console.log('Loading error', arguments);
       ret.reject();
@@ -24,7 +23,6 @@
         $.when(pt,enc).done(function(patient,enc) {
           analyzeEncounters(enc);
           populatEcnounterTable(enc);
-          populatTriggerMessages();
         });
 
         $.when(pt, obv).done(function(patient, obv) {
@@ -122,15 +120,16 @@
     }
   }
   
-  function populatTriggerMessages(){
+  function populatTriggerMessages(alerts){
     $('#trigger-messages').empty();
     $('#trigger-messages').append("<tr><th>DATA</th></tr>");
- 
+    var alerts =[];
     for(var i in alerts){
       var al = alerts[i]
         var row = "<tr><td>"+al+"</td></tr>";
         $('#trigger-messages').append(row);
       
+        populatTriggerMessages(alerts);
     }
   }
 
