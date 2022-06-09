@@ -96,6 +96,10 @@
             var p = encounter.period.start;
             var now = new Date();
             var pDate = new Date(p);
+            var diff = now - pDate;
+            if(diff && diff > 2){
+              console.log('bingo!');
+            }
           }
         }
         console.log("boop");
