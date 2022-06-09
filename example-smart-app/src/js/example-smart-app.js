@@ -96,7 +96,7 @@
             var p = encounter.period.start;
             var now = new Date();
             var pDate = new Date(p);
-            var diff = now - pDate;
+            var diff = (now - pDate) / (1000 * 3600 * 24);
             if(diff && diff > 2){
               console.log('bingo!');
             }
