@@ -91,6 +91,13 @@
     for(var i in enc){
       var encounter = enc[i];
       if(encounter.status == 'in-progress'){
+        if(encounter.type[0].text == "Inpatient"){
+          if(encounter.period){
+            var p = encounter.period.start;
+            var now = new Date();
+            var pDate = new Date(p);
+          }
+        }
         console.log("boop");
       }
     }
