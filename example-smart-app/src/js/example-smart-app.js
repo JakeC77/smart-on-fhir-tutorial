@@ -23,9 +23,10 @@
         $.when(pt,enc).done(function(patient,enc) {
           analyzeEncounters(enc);
           populatEcnounterTable(enc);
-          patientSearch('SM');
         });
 
+        
+        patientSearch('SM');
         $.when(pt, obv).done(function(patient, obv) {
           var byCodes = smart.byCodes(obv, 'code');
           var gender = patient.gender;
