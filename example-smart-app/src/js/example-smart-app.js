@@ -110,6 +110,47 @@
     populatTriggerMessages(alerts);
   }
 
+  function patientSearch(text) {
+   // clearPatientUI();
+   // $('#patient-loading-row').show();
+  
+   // var form = document.getElementById('patient-search-form');
+    var patientParams = {name: text};
+  
+    FHIR.oauth2.ready(function(smart) {
+      smart.api.fetchAll({type: 'Patient', query: patientParams}).then(
+  
+        // Display Patient information if the call succeeded
+        function(patients) {
+          // If any Patients matched the criteria, display them
+          if (patients.length) {
+            var patientsHTML = '',
+                slotReference = sessionStorage.getItem('slotReference');
+  
+            patients.forEach(function(patient) {
+              var patientName = patient.name[0].given.join(' ') + ' ' + patient.name[0].family;
+           //   patientsHTML = patientsHTML + patientHTML(slotReference, patient.id, patientName);
+            });
+  
+            form.reset();
+          //  renderPatients(patientsHTML);
+          }
+          // If no Patients matched the criteria, inform the user
+          else {
+          //  renderPatients('<p>No Patients found for the selected query parameters.</p>');
+          }
+        },
+  
+        // Display 'Failed to read Patients from FHIR server' if the call failed
+        function() {
+         // clearPatientUI();
+        //  $('#patient-errors').html('<p>Failed to read Patients from FHIR server</p>');
+        //  $('#patient-errors-row').show();
+        }
+      );
+    });
+  }
+
   
   function populatEcnounterTable(enc){
     $('#encTable').empty();
