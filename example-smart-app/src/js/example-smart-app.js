@@ -23,6 +23,7 @@
         $.when(pt,enc).done(function(patient,enc) {
           analyzeEncounters(enc);
           populatEcnounterTable(enc);
+          patientSearch('SM');
         });
 
         $.when(pt, obv).done(function(patient, obv) {
